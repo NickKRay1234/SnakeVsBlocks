@@ -351,6 +351,7 @@ GameObject:
   - component: {fileID: 1044104078}
   - component: {fileID: 1044104080}
   - component: {fileID: 1044104079}
+  - component: {fileID: 1044104081}
   m_Layer: 0
   m_Name: Snaik
   m_TagString: Untagged
@@ -402,3 +403,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tailSize: 5
   _segmentTempate: {fileID: 7642916764062555545, guid: 39fa1bd838776de42801c029c8b59bb5, type: 3}
+--- !u!114 &1044104081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1044104077}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8907f996b9e5c7743ad2f58494e95d5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

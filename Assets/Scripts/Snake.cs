@@ -9,6 +9,8 @@ public class Snake : MonoBehaviour
     [SerializeField] private float _tailSpringiness;
     [SerializeField] private SnakeHead _head;
 
+
+    private SnakeInput _input;
     private List<Segment> _tail;
     private TailGenerator _tailGenerator;
 
@@ -21,6 +23,8 @@ public class Snake : MonoBehaviour
     private void FixedUpdate()
     {
         Move(_head.transform.position + _head.transform.up * _speed * Time.deltaTime);
+        _input = GetComponent<SnakeInput>();
+        _head.transform.up = _input.GetDirectionToClick(_head.transform.position);
     }
 
     private void Move(Vector3 nextPosition)
