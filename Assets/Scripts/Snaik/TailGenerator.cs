@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class TailGenerator : MonoBehaviour
 {
-    [SerializeField] private int _tailSize;
     [SerializeField] private Segment _segmentTempate;
 
 
-    public List<Segment> Generate()
+    public List<Segment> Generate(int count)
     {
         List<Segment> tail = new List<Segment>();
 
 
-        for (int i = 0; i < _tailSize; i++)
+        for (int i = 0; i < count; i++)
         {
             tail.Add(Instantiate(_segmentTempate, transform));
         }
