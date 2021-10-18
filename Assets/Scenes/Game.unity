@@ -404,8 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ceca0364046f674e85db0e3ce52325e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 1
-  _tailSpringiness: 5
+  _speed: 3
+  _tailSpringiness: 15
   _head: {fileID: 637761430}
 --- !u!114 &1044104080
 MonoBehaviour:
@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 219f3d8eb6655764db48bf06531c604a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _tailSize: 5
+  _tailSize: 100
   _segmentTempate: {fileID: 7642916764062555545, guid: 39fa1bd838776de42801c029c8b59bb5, type: 3}
 --- !u!114 &1044104081
 MonoBehaviour:
@@ -800,6 +800,22 @@ PrefabInstance:
     - target: {fileID: 2726954560507326266, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940828187764813099, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940828187764813099, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940828187764813099, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940828187764813099, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
