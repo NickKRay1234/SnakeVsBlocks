@@ -4,27 +4,36 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    [Header("General:")]
     [SerializeField] private Transform _container;
     [SerializeField] private int _repeatCount;
     [SerializeField] private int _distanceBetweenFullLine;
     [SerializeField] private int _distanceBetweenRandomLine;
-
-
+    [Header("Blocks:")]
     [SerializeField] private Block _blockTemplate;
     [SerializeField] private int _blockSpawnChance;
+    [Header("Wall:")]
+    [SerializeField] private Wall _wallTemplate;
+    [SerializeField] private int _wallSpawnChance;
 
-    private SpawnPoint[] _blockSpawnPoints;
+
+    private BlockSpawnPoint[] _blockSpawnPoints;
+    private WallSpawnPoint[] _wallSpawnPoints;
 
 
     private void Start()
     {
-        _blockSpawnPoints = GetComponentsInChildren<SpawnPoint>();
+        _blockSpawnPoints = GetComponentsInChildren<BlockSpawnPoint>();
+        _wallSpawnPoints = GetComponentsInChildren<WallSpawnPoint>();
 
-        for(int i = 0; i < _repeatCount; i++)
+
+        for (int i = 0; i < _repeatCount; i++)
         {
             MoveSpawner(_distanceBetweenFullLine);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance);
             GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject);
             MoveSpawner(_distanceBetweenRandomLine);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance);
             GenerateRandomElements(_blockSpawnPoints, _blockTemplate.gameObject, _blockSpawnChance);
         }
     }
