@@ -30,10 +30,10 @@ public class Spawner : MonoBehaviour
         for (int i = 0; i < _repeatCount; i++)
         {
             MoveSpawner(_distanceBetweenFullLine);
-            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenFullLine, _wallTemplate.transform.localScale.y / 2f);
             GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject);
             MoveSpawner(_distanceBetweenRandomLine);
-            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenRandomLine, _wallTemplate.transform.localScale.y / 2f);
             GenerateRandomElements(_blockSpawnPoints, _blockTemplate.gameObject, _blockSpawnChance);
         }
     }
@@ -47,21 +47,21 @@ public class Spawner : MonoBehaviour
         }
     }
 
-    private void GenerateRandomElements(SpawnPoint[] spawnPoints, GameObject generatedElement, int spawnChance)
+    private void GenerateRandomElements(SpawnPoint[] spawnPoints, GameObject generatedElement, int spawnChance, int scaleY = 1, float offsetY = 0)
     {
         for(int i = 0; i < spawnPoints.Length; i++)
         {
             if(Random.Range(0, 100) < spawnChance)
             {
-                GameObject element = GenerateElement(spawnPoints[i].transform.position, generatedElement);
+                GameObject element = GenerateElement(spawnPoints[i].transform.position, generatedElement, offsetY);
+                element.transform.localScale = new Vector3(element.transform.localScale.x, scaleY, element.transform.localScale.z);
             }
         }
     }
 
-    private GameObject GenerateElement(Vector3 spawnPoint, GameObject generatedElement)
+    private GameObject GenerateElement(Vector3 spawnPoint, GameObject generatedElement, float offsetY = 0)
     {
-        //spawnPoint.y -= generatedElement.transform.localScale.y / 2;
-        spawnPoint.y -= generatedElement.transform.localScale.y;
+        spawnPoint.y -= offsetY;
         return Instantiate(generatedElement, spawnPoint, Quaternion.identity, _container);
     }
 
