@@ -677,10 +677,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _container: {fileID: 1225119772}
   _repeatCount: 5
-  _distanceBetweenFullLine: 3
-  _distanceBetweenRandomLine: 0
+  _distanceBetweenFullLine: 5
+  _distanceBetweenRandomLine: 3
   _blockTemplate: {fileID: 2940828187477971817, guid: 1feaaf6eb8ce198499b9f0ee5eeeb0ae, type: 3}
-  _blockSpawnChance: 0
+  _blockSpawnChance: 50
 --- !u!1 &1823624929
 GameObject:
   m_ObjectHideFlags: 0
