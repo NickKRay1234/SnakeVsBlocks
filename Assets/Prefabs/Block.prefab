@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c945800e0a273a8499a64bd93f2c04b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _destroyPriceRange: {x: 25, y: 50}
+  _destroyPriceRange: {x: 1, y: 25}
   _colors:
   - {r: 0.17254902, g: 0.4117647, b: 0.6039216, a: 1}
   - {r: 0.015686275, g: 0.54509807, b: 0.65882355, a: 1}
