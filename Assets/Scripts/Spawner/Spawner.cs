@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -13,7 +11,7 @@ public class Spawner : MonoBehaviour
     [SerializeField] private Block _blockTemplate;
     [SerializeField] private int _blockSpawnChance;
     [Header("Wall:")]
-    [SerializeField] private Wall _wallTemplate;
+    [SerializeField] private Wall _wallTemplate; 
     [SerializeField] private int _wallSpawnChance;
 
 
@@ -26,15 +24,14 @@ public class Spawner : MonoBehaviour
         _blockSpawnPoints = GetComponentsInChildren<BlockSpawnPoint>();
         _wallSpawnPoints = GetComponentsInChildren<WallSpawnPoint>();
 
-
         for (int i = 0; i < _repeatCount; i++)
         {
-            MoveSpawner(_distanceBetweenFullLine);
-            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenFullLine, _wallTemplate.transform.localScale.y / 2f);
-            GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject);
-            MoveSpawner(_distanceBetweenRandomLine);
-            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenRandomLine, _wallTemplate.transform.localScale.y / 2f);
-            GenerateRandomElements(_blockSpawnPoints, _blockTemplate.gameObject, _blockSpawnChance);
+            ChangeSpawnerPositionY(_distanceBetweenFullLine);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenFullLine, _wallTemplate.transform.localScale.y / 2f); // Walls generating;
+            GenerateFullLine(_blockSpawnPoints, _blockTemplate.gameObject); // Blocks generating;
+            ChangeSpawnerPositionY(_distanceBetweenRandomLine);
+            GenerateRandomElements(_wallSpawnPoints, _wallTemplate.gameObject, _wallSpawnChance, _distanceBetweenRandomLine, _wallTemplate.transform.localScale.y / 2f); // Walls generating;
+            GenerateRandomElements(_blockSpawnPoints, _blockTemplate.gameObject, _blockSpawnChance); // Blocks generating;
         }
     }
 
@@ -42,12 +39,10 @@ public class Spawner : MonoBehaviour
     private void GenerateFullLine(SpawnPoint[] spawnPoints, GameObject generatedElement)
     {
         for (int i = 0; i < spawnPoints.Length; i++)
-        {
             GenerateElement(spawnPoints[i].transform.position, generatedElement);
-        }
     }
 
-    private void GenerateRandomElements(SpawnPoint[] spawnPoints, GameObject generatedElement, int spawnChance, int scaleY = 1, float offsetY = 0)
+    private void GenerateRandomElements(SpawnPoint[] spawnPoints, GameObject generatedElement, int spawnChance, int scaleY = 1, float offsetY = 0) // Blocks, walls, bonuses;
     {
         for(int i = 0; i < spawnPoints.Length; i++)
         {
@@ -65,7 +60,7 @@ public class Spawner : MonoBehaviour
         return Instantiate(generatedElement, spawnPoint, Quaternion.identity, _container);
     }
 
-    private void MoveSpawner(int distanceY)
+    private void ChangeSpawnerPositionY(int distanceY)
     {
         transform.position = new Vector3(transform.position.x, transform.position.y + distanceY, transform.position.z);
     }
