@@ -16,7 +16,6 @@ public class Block : MonoBehaviour
     public int LeftToFill => _destroyPrice - _filling;
     public event UnityAction<int> FillingUpdated;
 
-    
 
     private void Start()
     {
@@ -24,13 +23,14 @@ public class Block : MonoBehaviour
         SetColor(_colors[Random.Range(0, _colors.Length)]);
         _destroyPrice = Random.Range(_destroyPriceRange.x, _destroyPriceRange.y);
         FillingUpdated?.Invoke(LeftToFill);
+
     }
+
 
     public void Fill()
     {
         _filling++;
-
-
+        FillingUpdated?.Invoke(LeftToFill);
         if (_filling == _destroyPrice)
             Destroy(gameObject);
     }

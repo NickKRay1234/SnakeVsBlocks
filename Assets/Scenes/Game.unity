@@ -690,7 +690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 3
-  _tailSize: 10
+  _tailSize: 40
   _tailSpringiness: 15
   _head: {fileID: 637761430}
 --- !u!114 &1044104080

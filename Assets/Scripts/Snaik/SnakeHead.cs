@@ -24,10 +24,12 @@ public class SnakeHead : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        BlockCollided?.Invoke();
 
         if (collision.gameObject.TryGetComponent(out Block block))
+        {
+            BlockCollided?.Invoke();
             block.Fill();
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

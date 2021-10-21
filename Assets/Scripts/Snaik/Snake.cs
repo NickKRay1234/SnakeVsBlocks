@@ -21,8 +21,9 @@ public class Snake : MonoBehaviour
     private void Awake()
     {
         _tailGenerator = GetComponent<TailGenerator>();
-        _tail = _tailGenerator.Generate(_tailSize);
+        _input = GetComponent<SnakeInput>();
 
+        _tail = _tailGenerator.Generate(_tailSize);
         SizeUpdated?.Invoke(_tail.Count);
     }
 
