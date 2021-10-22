@@ -10,6 +10,7 @@ public class Snake : MonoBehaviour
     [SerializeField] private int _tailSize;
     [SerializeField] private float _tailSpringiness;
     [SerializeField] private SnakeHead _head;
+    private Camera _camera;
 
 
     private SnakeInput _input;
@@ -22,6 +23,7 @@ public class Snake : MonoBehaviour
     {
         _tailGenerator = GetComponent<TailGenerator>();
         _input = GetComponent<SnakeInput>();
+        _camera = Camera.main;
 
         _tail = _tailGenerator.Generate(_tailSize);
         SizeUpdated?.Invoke(_tail.Count);
@@ -41,6 +43,7 @@ public class Snake : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //_head.transform.position = _camera.ScreenToViewportPoint(0,0);
         Move(_head.transform.position + _head.transform.up * _speed * Time.deltaTime);
         _input = GetComponent<SnakeInput>();
         _head.transform.up = _input.GetDirectionToClick(_head.transform.position);
