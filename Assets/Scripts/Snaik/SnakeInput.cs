@@ -13,13 +13,12 @@ public class SnakeInput : MonoBehaviour
 
     public Vector2 GetDirectionToClick(Vector2 headPosition)
     {
-        Vector3 mousePosition = Input.mousePosition;
+        Vector3 fingerPosition = Input.mousePosition;
 
-        //mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        mousePosition = _camera.ScreenToViewportPoint(mousePosition);
-        mousePosition.y = 1;
-        mousePosition = _camera.ViewportToWorldPoint(mousePosition);
-        Vector2 direction = new Vector2(mousePosition.x - headPosition.x, mousePosition.y - headPosition.y);
+        fingerPosition = _camera.ScreenToViewportPoint(fingerPosition);
+        fingerPosition.y = 1;
+        fingerPosition = _camera.ViewportToWorldPoint(fingerPosition);
+        Vector2 direction = new Vector2(fingerPosition.x - headPosition.x, fingerPosition.y - headPosition.y);
 
         return direction;
     }
